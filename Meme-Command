@@ -1,0 +1,30 @@
+// Install imageapi //
+
+```npm i imageapi.js```
+
+
+
+
+const api = require("imageapi.js");
+
+// Meme command
+
+Client.on('message', async msg => {
+    if (msg.content === '-meme') {
+      let subreddits = [
+        "memes"
+      ];
+      let subreddit = subreddits[Math.floor(Math.random()*(subreddits.length))];
+      let img = await api(subreddit)
+      const Embed = new Discord.MessageEmbed()
+      .setTitle(`A meme from r/arabfunny`)
+      .setURL(`https://www.reddit.com/r/arabfunny`)
+      .setColor('RANDOM')
+      .setImage(img)
+       msg.channel.send(Embed)
+    }
+  });
+  
+
+// Login To Discord with your app's Token
+Client.login(process.env.token);
